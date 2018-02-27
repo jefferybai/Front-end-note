@@ -1,7 +1,6 @@
 # Front-end-note
 ## js知识点
 
+- [js中的方法](#js-function)
 
-- [Updating to New Releases](#updating-to-new-releases)
-
-## Updating to New Releases
+## js-function
