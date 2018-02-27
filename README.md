@@ -3,4 +3,4 @@
 
 - [js中的方法](#js-function)
 
-## js中的方法
+## js-function
