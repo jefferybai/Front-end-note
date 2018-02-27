@@ -14,7 +14,7 @@ c 原型方法
 
 For example:
 
-### `people function`
+##### `People function`
 
 ```js
 function People(name)
