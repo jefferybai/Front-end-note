@@ -70,8 +70,8 @@ function checkscope(){
     console.log(scope);//函数变量
     console.log(blockScope) //blockScope is not defined
 }
-checkscope();
 console.log(scope);//全局变量
 console.log(window.windowScope);//给window的windowScope赋值
+checkscope();
 ```
 
