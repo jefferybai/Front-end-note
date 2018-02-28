@@ -53,6 +53,7 @@ js中的变量分两种全局变量局部变量
 2.局部变量：声明在函数内部的变量
 
 变量的作用域有三种
+
 1，全局 2，函数 3，块级
 
 ```js
@@ -60,15 +61,14 @@ windowScope = '给window的windowScope赋值';
 console.log(scope) //undefine （声明未赋值输出，  作用域提升）
 var scope = "全局变量";
 function checkscope(){
-    var scope = "局部变量";
+    var scope = "";
     function nested(){
         let blockScope = '块级变量';
-        scope = "嵌套作用域内的局部变量";
-        console.log(scope);//嵌套作用域内的局部变量
+        scope = "函数变量";
     }
     nested();
+    console.log(scope);//函数变量
     console.log(blockScope) //blockScope is not defined
-    console.log(scope);//嵌套作用域内的局部变量
 }
 checkscope();
 console.log(scope);//全局变量
