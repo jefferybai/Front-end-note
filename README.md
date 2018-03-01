@@ -3,6 +3,7 @@
 
 - [js中的方法](#方法)
 - [js中的变量](#变量)
+- [闭包](#闭包)
 
 
 ## 方法
@@ -74,4 +75,42 @@ console.log(scope);//全局变量
 console.log(window.windowScope);//给window的windowScope赋值
 checkscope();
 ```
+
+## 闭包
+
+闭包是一个能读取函数内部变量的子函数，函数与外界连接的桥梁， 一个未释放内存的栈区
+
+闭包的构成：引用了一个函数返回的函数
+
+闭包的用途：存储变量， 保证变量不会被垃圾回收器回收
+
+注意： 使用过多的闭包容易造成内存泄漏
+
+ ```js
+ 　　function f1(){
+
+　　　　var n = 999;
+
+　　　　nAdd = function() { n += 1}
+
+　　　　function f2(){
+　　　　　　console.log(n);
+　　　　}
+
+　　　　return f2;
+
+　　}
+
+　　var result = f1(); //闭包的形成，存储局部变量
+
+　　result(); // 999
+
+　　nAdd();
+
+　　result(); // 1000
+  ```
+  
+  
+
+
 
