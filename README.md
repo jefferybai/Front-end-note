@@ -4,6 +4,7 @@
 - [js中的方法](#方法)
 - [js中的变量](#变量)
 - [闭包](#闭包)
+- [柯里化](#柯里化)
 
 
 ## 方法
@@ -101,7 +102,74 @@ checkscope();
 　　result(); // 1000
   ```
   
-  
+  ##柯里化
+又称部分求值（Partial Evaluation），是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术.
+ ###常见作用：1,延迟计算/运行 2. 动态创建函数 3. 参数复用
+ 作者：赵雨森
+链接：https://www.zhihu.com/question/37774367/answer/192978122
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+1. 延迟计算下面是一个部分求和的例子：
+```js
+function currying(func) {
+    const args = [];
+    return function result(...rest) {
+        if (rest.length === 0)
+            return func(...args);
+
+        args.push(...rest);
+        return result;
+    }
+}
+
+const add = (...args) => args.reduce((a, b) => a + b);
+
+const sum = currying(add);
+
+sum(1,2)(3);
+sum(4);
+sum(); // 10
+```
+2. 动态创建函数例如兼容现代浏览器和IE浏览器的添加事件方法，我们通常会这样写：
+```js
+const addEvent = function (elem, type, fn, cature) {
+    if (window.addEventListener) {
+        elem.addEventListener(type, (e) => fn.call(elem, e), capture);
+    } else if (window.attachEvent) {
+        elem.attachEvent('on' + type, (e) => fn.call(elem, e);
+    }
+}
+```
+这种方法显然有个问题，就是每次添加事件处理都要执行一遍`if {...} else if {...}`。其实用下面的方法只需判断一次即可：
+```js
+const addEvent = (function () {
+    if (window.addEventListener) {
+        return (elem, type, fn, capture) => {
+            elem.addEventListener(type, (e) => fn.call(elem, e), capture);
+        };
+    } else {
+        return (elem, type, fn, capture) => {
+            elem.attachEvent('on' + type, (e) => fn.call(elem, e);
+        };
+    }
+})();
+```
+这个例子，第一次`if {...} else if {...}`判断之后，完成了部分计算，动态创建新的函数来处理后面传入的参数，以后就不必重新进行计算了。这是一个典型的柯里化的应用。
+3. 参数复用当多次调用同一个函数，并且传递的参数绝大多数是相同的时候，那么该函数就是一个很好的柯里化候选。例如我们经常会用`Function.prototype.bind`方法来解决上述问题。
+```js
+const obj = { name: 'test' };
+const foo = function (prefix, suffix) {
+    console.log(prefix + this.name + suffix);
+}.bind(obj, 'currying-');
+foo('-function'); // currying-test-function
+```
+与`call`/`apply`方法直接执行不同，`bind`方法将第一个参数设置为函数执行的上下文，其他参数依次传递给调用方法（函数的主体本身不执行，可以看成是延迟执行），并动态创建返回一个新的函数。这很符合柯里化的特征。下面来手动实现一下`bind`方法：
+```js
+Function.prototype.bind = function (context, ...args) {
+    return () => this.call(context, ...args);
+};
+```
 
 
 
