@@ -28,10 +28,20 @@ function People(name)
     console.log("My name is "+this.name);
   }
 }
+
 //类方法
 People.Run=function(){
   console.log("I can run");
 }
+
+//类方法this存储变量
+People.getInstance = function() {
+  if(!this.instance) {
+    this.instance = new People();
+  }
+  return this.instance
+}
+
 //原型方法
 People.prototype.introduceChinese=function(){
   console.log("我的名字是"+this.name);
