@@ -2,6 +2,8 @@
 ## js知识点
 - [js中的方法](#方法)
 - [js中的变量](#变量)
+- [js中的new运算符](#js中的new运算符)
+
 - [闭包](#闭包)
 - [柯里化](#柯里化)
 
@@ -85,6 +87,39 @@ console.log(scope);//全局变量
 console.log(window.windowScope);//给window的windowScope赋值
 checkscope();
 ```
+
+## js中的new运算符
+
+JavaScript 中的根对象是 Object.prototype 对象。Object.prototype 对象是一个空的 对象。
+
+我们在 JavaScript 遇到的每个对象，实际上都是从 Object.prototype 对象克隆而来的， Object.prototype 对象就是它们的原型。
+
+所以，js中要得到一个对象，不是通过实例化类，而是找到一个对象作为原型并克隆它
+
+```js
+var objectFactory = function(){
+  var obj = new Object(), // 从 Object.prototype 上克隆一个空的对象
+  Constructor = [].shift.call( arguments ); // 取得外部传入的构造器，此例是 Person
+  obj.__proto__ = Constructor.prototype; // 继承传入的原型
+  var ret = Constructor.apply( obj, arguments ); //通过构造函数给对象赋予初始值
+  return typeof ret === 'object' ? ret : obj;
+};
+
+function Person( name ){ 
+  this.name = name;
+};
+
+Person.prototype.getName = function(){ 
+  return this.name;
+};
+
+var a = objectFactory( Person, 'jeffery.bai' );
+console.log( a.name ); // 输出:jeffery.bai
+console.log( a.getName() ); // 输出:jeffery.bai
+
+```
+
+
 
 ## 闭包
 
