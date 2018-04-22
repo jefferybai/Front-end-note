@@ -90,7 +90,7 @@ checkscope();
 
 ## js中的new运算符
 
-JavaScript 中的根对象是 Object.prototype 对象。Object.prototype 对象是一个空的 对象。
+JavaScript中没有类的概念，JavaScript 中的根对象是 Object.prototype 对象。Object.prototype 对象是一个空的 对象。
 
 我们在 JavaScript 遇到的每个对象，实际上都是从 Object.prototype 对象克隆而来的， Object.prototype 对象就是它们的原型。
 
