@@ -167,22 +167,16 @@ console.log( a.getName() ); // 输出:jeffery.bai
    //函数作为参数被传递
    [1, 2, 3].filter((item) => item > 2);
    
-    var isString = function( obj ){
-      return Object.prototype.toString.call( obj ) === '[object String]';
-    };
-    var isArray = function( obj ){
-      return Object.prototype.toString.call( obj ) === '[object Array]';
-    };
-    var isNumber = function( obj ){
-      return Object.prototype.toString.call( obj ) === '[object Number]';
-    };
     
     //函数可以作为返回值输出
-    var isType = function( type ){ return function( obj ){
-        return Object.prototype.toString.call( obj ) === '[object '+ type +']'; }
+    var isType = function( type ){ 
+      return function( obj ){
+        return Object.prototype.toString.call( obj ) === '[object '+ type +']'; 
+      }
     };
-    
-    
+    var isString = isType( 'String' ); var isArray = isType( 'Array' ); 
+    var isNumber = isType( 'Number' );
+    console.log( isArray( [ 1, 2, 3 ] ) ); // true
   ```
   
   
