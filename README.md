@@ -163,6 +163,27 @@ console.log( a.getName() ); // 输出:jeffery.bai
   
   1，函数可以作为参数被传递; 2， 函数可以作为返回值输出。
   
+   ```js
+   //函数作为参数被传递
+   [1, 2, 3].filter((item) => item > 2);
+   
+    var isString = function( obj ){
+      return Object.prototype.toString.call( obj ) === '[object String]';
+    };
+    var isArray = function( obj ){
+      return Object.prototype.toString.call( obj ) === '[object Array]';
+    };
+    var isNumber = function( obj ){
+      return Object.prototype.toString.call( obj ) === '[object Number]';
+    };
+    
+    //函数可以作为返回值输出
+    var isType = function( type ){ return function( obj ){
+        return Object.prototype.toString.call( obj ) === '[object '+ type +']'; }
+    };
+    
+    
+  ```
   
   
  ## 柯里化
