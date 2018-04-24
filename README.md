@@ -4,7 +4,7 @@
 - [js中的变量](#变量)
 - [js中比较两个值是否相当](#js中比较两个值是否相当)
 - [js中的new运算符](#js中的new运算符)
-
+- [继承](#继承)
 - [闭包](#闭包)
 - [高阶函数](#高阶函数)
 - [柯里化](#柯里化)
@@ -127,6 +127,35 @@ Person.prototype.getName = function(){
 var a = objectFactory( Person, 'jeffery.bai' );
 console.log( a.name ); // 输出:jeffery.bai
 console.log( a.getName() ); // 输出:jeffery.bai
+
+```
+
+## 继承
+
+每个对象的实例都是自己构造函数的prototype， 如果对象无法响应么个请求那么会通过_proto_查找自己的原型链, _proto_指向创建它的方法对象(构造函数)的原型对象
+
+```js
+function Animal() {
+  this.age = 0;
+}
+
+Animal.prototype.getName = function() {
+  console.log("animal")
+}
+
+class Dog extend Animal {
+
+  constructor() {
+    super()
+  }
+  
+  sound() {
+    console.log('wang wang wang')
+  }
+}
+
+let dog = new Dog();
+dog.getName() // 'animal'
 
 ```
 
