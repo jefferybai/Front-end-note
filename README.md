@@ -282,4 +282,25 @@ Function.prototype.bind = function (context, ...args) {
 ```
 
 
+## 单例模式
+js中的单例模式是指，js中的么个对象在一个程序中只能被克隆一次
+
+简单单例模式：
+```js
+ function Singleton() {}
+ 
+ Singleton.getInstance = function() {
+  if(!this.instance) {
+    this.instance = new Singleton();
+  }
+  return this.instance;
+ }
+ ```
+ 
+## 工厂模式
+
+
+
+
+
 
