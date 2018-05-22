@@ -8,6 +8,7 @@
 - [闭包](#闭包)
 - [高阶函数](#高阶函数)
 - [柯里化](#柯里化)
+- [compose函数](#compose函数)
 
 ## [js设计模式](#设计模式)
 - [单例模式](#单例模式)
@@ -281,6 +282,31 @@ foo('-function'); // currying-test-function
 Function.prototype.bind = function (context, ...args) {
     return () => this.call(context, ...args);
 };
+```
+
+## compose函数
+compose是一个装饰者模式，它的作用是动态的组合柯里化以后的函数，赋予函数新的职责和功能，最典型的例子就是redux的middelware
+功能：compose(funcA, funcB, funcC) -> compose(funcA(funcB(funcC())))
+返回值： (Function): 从右到左把接收到的函数合成后的最终函数
+基本实现： 
+var compose = function(f,g) {
+  return function(x) {
+    return f(g(x));
+  };
+};
+具体实现： 
+```js
+const compose = (arr) => {
+  return function(ctx) {
+    [...arr].reverse().reduce((func, item) => {
+      return function(ctx) {
+        item(ctx, function() {
+          func(ctx)
+        })
+      }
+    }, ()=>{})(ctx)
+  }
+}
 ```
 
 ## 设计模式
