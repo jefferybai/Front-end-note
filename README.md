@@ -289,12 +289,17 @@ compose是一个装饰者模式，它的作用是动态的组合柯里化以后�
 功能：compose(funcA, funcB, funcC) -> compose(funcA(funcB(funcC())))
 返回值： (Function): 从右到左把接收到的函数合成后的最终函数
 基本实现： 
+
+```js
 var compose = function(f,g) {
   return function(x) {
     return f(g(x));
   };
 };
+```
+
 具体实现： 
+
 ```js
 const compose = (arr) => {
   return function(ctx) {
