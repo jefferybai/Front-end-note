@@ -103,7 +103,9 @@ checkscope();
 
 基本数据类型有这五种:Undefined、Null、String、Number、Boolean。
 
-引用类型有这几种：object、Array、RegExp、Date、Function、特殊的基本包装类型(String、Number、Boolean)以及单体内置对象(Global、Math)。
+引用类型有这几种：object、Array、RegExp、Date、Function、symbol特殊的基本包装类型(String、Number、Boolean)以及单体内置对象(Global、Math)。
+
+可以被 typeof 操作符识别的有 null、undefined、boolean、number、string、object、symbol。因为(Array, RegExp, Date, Function)为Object子类型。
 
 ```js
 var strPrimitive = "I am a string";
