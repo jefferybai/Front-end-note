@@ -2,6 +2,7 @@
 ## js基础知识点
 - [js中的方法](#方法)
 - [js中的变量](#变量)
+- [基础数据类型和引用类型](#基础数据类型和引用类型)
 - [js中比较两个值是否相当](#js中比较两个值是否相当)
 - [js中的new运算符](#js中的new运算符)
 - [this](#this)
@@ -98,6 +99,32 @@ console.log(scope);//全局变量
 console.log(window.windowScope);//给window的windowScope赋值
 checkscope();
 ```
+## 基础数据类型和引用类型
+
+基本数据类型有这五种:Undefined、Null、String、Number、Boolean。
+
+引用类型有这几种：object、Array、RegExp、Date、Function、特殊的基本包装类型(String、Number、Boolean)以及单体内置对象(Global、Math)。
+
+```js
+var strPrimitive = "I am a string";
+typeof strPrimitive;							// "string"
+strPrimitive instanceof String;					// false
+
+var strObject = new String( "I am a string" );
+typeof strObject; 								// "object"
+strObject instanceof String;					// true
+
+// 考察 object 子类型
+Object.prototype.toString.call( strObject );	// [object String]
+```
+
+
+创建String, Number, Boolean的方式有两种1，字面形式的值 2，构建对象的形式new。
+
+JS 社区的绝大部分人都强烈推荐尽可能地使用字面形式的值，而非使用构造的对象形式。
+
+而且基本字面值在访问length，或者42.359.toFixed(2)这样的方法或者属性时候，引擎会自动转换为包装对象。
+
 
 ## js中比较两个值是否相当
 
