@@ -118,6 +118,8 @@ strObject instanceof String;					// true
 
 // 考察 object 子类型
 Object.prototype.toString.call( strObject );	// [object String]
+
+strObject.valueOf() //"I am a string"
 ```
 
 
@@ -127,6 +129,7 @@ JS 社区的绝大部分人都强烈推荐尽可能地使用字面形式的值�
 
 而且基本字面值在访问length，或者42.359.toFixed(2)这样的方法或者属性时候，引擎会自动转换为包装对象。
 
+基本数据类型的包装类型可以通过调用valueOf()方法得到基本数据类型的值
 
 ## js中比较两个值是否相当
 
