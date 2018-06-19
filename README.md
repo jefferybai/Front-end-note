@@ -22,8 +22,11 @@
 - [观察者模式](#观察者模式)
 
 ## use strict
+
 1, 严格模式下不支持 arguments.callee / arguments.callee.caller
+
 2，严格模式下实参和形参没有映射关系,反之则存在映射关系
+
 ```js
 ~function() {
   "use strict"
