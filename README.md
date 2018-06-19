@@ -1,6 +1,6 @@
 # Front-end-note
 ## js基础知识点
-- [use strict](#use strict)
+- [use strict](#usestrict)
 - [js中的方法](#方法)
 - [作用域](#作用域)
 - [js中的变量](#变量)
