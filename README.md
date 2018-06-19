@@ -1,5 +1,6 @@
 # Front-end-note
 ## js基础知识点
+- [use strict](#use strict)
 - [js中的方法](#方法)
 - [作用域](#作用域)
 - [js中的变量](#变量)
@@ -20,7 +21,32 @@
 - [工厂模式](#工厂模式)
 - [观察者模式](#观察者模式)
 
+## use strict
+1, 严格模式下不支持 arguments.callee / arguments.callee.caller
+2，严格模式下实参和形参没有映射关系,反之则存在映射关系
+```js
+~function() {
+  "use strict"
+  function fn(x) {
+    arguments[0] = 100;
+    console.log(x); //10
+  }
+  fn(10)
+}()
 
+~function() {
+  function fn(x) {
+    arguments[0] = 100;
+    console.log(x); //100
+  }
+  fn(10)
+}()
+```
+3，严格模式下不允许对象有重复的属性
+```js
+  "use strict"
+   var obj = {a: 12, a: 13};
+```
 
 ## 方法
 javascript的方法可以分为三类：
