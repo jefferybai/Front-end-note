@@ -8,6 +8,7 @@
 - [基础数据类型和引用类型](#基础数据类型和引用类型)
 - [js中比较两个值是否相当](#js中比较两个值是否相当)
 - [js中的new运算符](#js中的new运算符)
+- [js中的instanceof运算符](#js中的instanceof运算符)
 - [this](#this)
 - [继承](#继承)
 - [闭包](#闭包)
@@ -227,6 +228,12 @@ console.log( a.name ); // 输出:jeffery.bai
 console.log( a.getName() ); // 输出:jeffery.bai
 
 ```
+
+## js中的instanceof运算符
+
+instanceof运算符是指么个实例的__proto_是否存在于么个function的prototype上面。
+
+
 ## this
 
 this 既不是函数自身的引用，也不是函数词法作用域的引用
