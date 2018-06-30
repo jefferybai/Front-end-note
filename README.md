@@ -2,6 +2,7 @@
 ## js基础知识点
 - [js严格模式(use strict)](#js严格模式)
 - [js中的方法](#方法)
+- [constructor](#constructor)
 - [作用域](#作用域)
 - [js中的变量](#变量)
 - [提升](#提升)
@@ -104,6 +105,14 @@ People.run(); //I can run
 people.introduceChinese()//我的名字是jeffery.bai
 
 ```
+
+## constructor
+
+浏览器默给方法对象的原型对象开辟的堆内存中有一个construtor属性，存储的是当前类本身，
+
+在实际项目开发中我们会重定向原型（让原有的方法对象的prototype指向自己开辟的堆内存），
+
+如果给prototype重定向那么construtor将丢失， 这样会导致构造函数中this所指向的变量和方法丢失。
 
 ## 作用域
 
