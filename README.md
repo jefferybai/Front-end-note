@@ -108,6 +108,14 @@ people.introduceChinese()//我的名字是jeffery.bai
 
 ## constructor
 
+```js
+function fn() {
+
+}
+
+fn.prototype = {}// prototype重定向,fn丢失, constructor指向Object的构造函数
+```
+
 浏览器默给方法对象的原型对象开辟的堆内存中有一个construtor属性，存储的是当前类本身，
 
 在实际项目开发中我们会重定向原型（让原有的方法对象的prototype指向自己开辟的堆内存），
