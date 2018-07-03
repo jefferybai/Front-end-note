@@ -410,7 +410,7 @@ Function.prototype.bind = function (context, ...args) {
 compose是一个装饰者模式，它的作用是动态的组合柯里化以后的函数，赋予函数新的职责和功能，最典型的例子就是redux的middelware
 
 作用：
-compose(funcA, funcB, funcC) // （）=> funcA(funcB(funcC()))
+compose(funcA, funcB, funcC)() // （）=> funcA(funcB(funcC()))
 
 返回值： (Function): 从右到左把接收到的函数合成后的最终函数
 
