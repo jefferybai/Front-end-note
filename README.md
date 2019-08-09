@@ -16,6 +16,8 @@
 - [高阶函数](#高阶函数)
 - [柯里化](#柯里化)
 - [compose函数](#compose函数)
+- [js aop](#js aop)
+
 
 ## [js设计模式](#设计模式)
 - [单例模式](#单例模式)
@@ -439,6 +441,30 @@ const compose = (arr) => {
   }
 }
 ```
+
+## js aop
+
+AOP(面向切面编程)的主要作用是把一些跟核心业务逻辑模块无关的功能抽离出来，这些跟业务逻辑无关的功能通常包括日志统计、安全控制、异常处理等。
+
+把这些功能抽离出来之后， 再通过“动态织入”的方式掺入业务逻辑模块中。
+
+AOP的好处首先是可以保持业务逻辑模块的纯净和高内聚性，其次是可以很方便地插入和删除非业务模块功能。
+
+它一般包含before和after两个切面函数
+
+```
+// originFun为原函数，before和after为增强方法
+    function constructor(originFun, before, after){
+        function _class(){
+            before.apply(this, arguments);
+            originFun.apply(this, arguments);
+            after.apply(this, arguments);
+        }
+        return _class;
+    }
+```
+
+
 
 ## 设计模式
 
