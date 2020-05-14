@@ -250,7 +250,7 @@ console.log( a.getName() ); // 输出:jeffery.bai
 
 ## js中的instanceof运算符
 
-instanceof运算符是指么个实例的__proto_是否存在于么个function的prototype上面。
+instanceof运算符是指当前实例是否存在于当前Function的原型链上。
 
 
 ## this
